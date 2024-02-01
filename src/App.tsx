@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { ChakraProvider, Container } from "@chakra-ui/react"
+import StopWatch from './StopWatch';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+       return(
+        <div>
+            <ChakraProvider>
+                <Container
+                maxW={['container.sm', 'container.md', 'container.lg']}
+                p="0"
+                m="0"
+                minW={"100vw"}
+                minHeight={"100vh"}
+                fontFamily="Verdana"
+                bg="black">
+                    <StopWatch />
+                </Container>
+            </ChakraProvider>
+        </div>
+    )
 }
-
-export default App;
