@@ -4,7 +4,7 @@ import StopWatch from './StopWatch';
 
 export default function App() {
        return(
-        <div>
+        <div className='app-ctn'>
             <ChakraProvider>
                 <Container
                 maxW={['container.sm', 'container.md', 'container.lg']}
@@ -12,8 +12,7 @@ export default function App() {
                 m="0"
                 minW={"100vw"}
                 minHeight={"100vh"}
-                fontFamily="Verdana"
-                bg="black">
+                fontFamily="Verdana">
                     <StopWatch />
                 </Container>
             </ChakraProvider>

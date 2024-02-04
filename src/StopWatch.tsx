@@ -1,4 +1,5 @@
-import { Heading, Stack, VStack, HStack, Text } from "@chakra-ui/react";
+import { Heading, Stack, VStack, HStack, Text, Link } from "@chakra-ui/react";
+import { ExternalLinkIcon } from "@chakra-ui/icons";
 import StopWatchButton from './StopWatchButton'
 import React, { useState, useEffect } from "react";
 
@@ -34,6 +35,7 @@ export default function StopWatch() {
                 setTime((prev) => prev + 1);
             }, 10);
         } else {
+            // was in the orignal but threw an error here, code works without it
             //clearInterval(interval);
         }
         return () => clearInterval(interval);
@@ -62,33 +64,40 @@ export default function StopWatch() {
 
 
     return(
-        <Stack w="full" mx="0" p="0" direction={["column", "column", "column", "row"]} spacing='8' minHeight={"100vh"} bg="black">
-            <VStack alignItems="space-between" w='90%' spacing="1.5" h="full" bg="white" mt ="3%" mb="2%" mx="5%" borderRadius="25px">
-                <Heading mt="5%" as="h1" color="black" textAlign="center" fontWeight="bold" fontSize="4xl">
-                    Shopify Challenge Stopwatch
+        <Stack w="full" mx="0" p="0" direction={["column", "column", "column", "row"]} spacing='8' minHeight={"100vh"} bg="#eef0eb" position={"relative"}>
+            <VStack alignItems="space-between" w='100%' spacing="1.5" h="100%" m="0">
+                <Heading mt="2rem" as="h1" color="#153243" textAlign="center" fontWeight="bold" fontSize="4xl">
+                    Stopwatch by Jaren Worme
                 </Heading>
-                <VStack mx="3%" my="3%" py="10%" border="5px solid grey" borderRadius="25px">                
-                    <Heading as="h1" color="black" textAlign="center" fontWeight="bold" fontSize="6xl">
+                <VStack mx="2rem" my="6rem">                
+                    <Heading as="h1" color="#284b63" textAlign="center" fontWeight="bold" fontSize="7xl">
                         <span>{ hours } : { minutes } : { seconds } : { milliseconds }</span>
                     </Heading>
                 </VStack>
-                <StopWatchButton label='start' back='#1BE4F4' disableCondition={isRunning} onClick={handleStart}></StopWatchButton>
-                <HStack mt="3%">
-                    <StopWatchButton label='reset' back='#30F99E' disableCondition={false} onClick={handleReset} ></StopWatchButton>
-                    <StopWatchButton label='stop' back='#30F99E' disableCondition={false} onClick={handleStop} ></StopWatchButton>
-                    <StopWatchButton label='lap' back='#30F99E' disableCondition={false} onClick={addLap} ></StopWatchButton>
+                <HStack width="60%" m="0 20%">
+                    <StopWatchButton label='start' back='#153243' disableCondition={isRunning} onClick={handleStart}></StopWatchButton>
                 </HStack>
-                <VStack minH="10%" alignItems="center">
-                    <Text>{numLaps>0 ? "laps:" : "laps will be displayed below here"}</Text>
+                <HStack m="3% 15%" width="70%">
+                    <StopWatchButton label='reset' back='#b4b8ab' disableCondition={false} onClick={handleReset} ></StopWatchButton>
+                    <StopWatchButton label='stop' back='#b4b8ab' disableCondition={false} onClick={handleStop} ></StopWatchButton>
+                    <StopWatchButton label='lap' back='#b4b8ab' disableCondition={false} onClick={addLap} ></StopWatchButton>
+                </HStack>
+                <VStack minH="5%" mt="0" alignItems="center" mb="1.5rem">
+                    <Text color="#153243" fontSize={"large"} >{numLaps>0 ? "laps:" : "laps will be displayed below here"}</Text>
                     {  laps.map((item) => {
-                        return <HStack justifyContent="space-between" w='90%' mx='10%'><Text textAlign="left" w='40%'>{item[0]}</Text><Text textAlign="right" w='40%'>{item[1]}</Text></HStack>;
+                        return  <HStack color="#153243" fontSize={"large"} justifyContent="space-between" w='60%'>
+                                    <Text textAlign="left">{item[0]}</Text>
+                                    <Text textAlign="right">{item[1]}</Text>
+                                </HStack>;
                     }) }
                 </VStack>
-                <VStack padding="0" my="5px" h="5%" fontSize="2xs">
-                    <br />
-                    <Text my="0">&copy; Jaren Worme 2024</Text>
-                    <HStack color="#4DEEF5" my="0" >
-                        <a  href="https://www.jarenworme.com/">visit my portfolio website</a>
+                <VStack padding="0" my="5px" h="2.5rem" fontSize="2xs" >
+                    <HStack my="1rem" bottom="0" position="absolute" spacing="2rem">
+                        <Text color="#153243" fontStyle="italic" my="0">&copy; Jaren Worme 2024</Text>
+                        <Link color="#153243" href="https://www.jarenworme.com/" isExternal>
+                            jarenworme.com
+                            <ExternalLinkIcon/>
+                        </Link>
                     </HStack>
                 </VStack>
             </VStack>

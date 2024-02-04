@@ -1,4 +1,3 @@
-import React from 'react'
 import { Button } from "@chakra-ui/react"
 
 // button props to change styles between buttons as inputs in the render
@@ -14,15 +13,15 @@ export default function StopWatchButton({label, back, disableCondition, onClick}
     return(
         <>
             <Button
-                mx="5%"
+                mx="4%"
                 w="90%"
                 bg={back} 
-                color="black" 
+                color="#eef0eb" 
                 minH="3.5rem"
                 onClick={onClick}
-                _hover={{ bg: "#E3FCEF", border: "none" }}
+                _hover={{border: "none"}}
                 isDisabled={(disableCondition)} 
-                _disabled={{ opacity: '0.4', cursor: 'not-allowed'}}
+                _disabled={{ opacity: '0.7', cursor: 'not-allowed'}}
             >
                 {label}
             </Button>
